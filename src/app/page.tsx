@@ -1,11 +1,12 @@
-import { Navbar } from "@/components/Navbar";
-import Image from "next/image";
+'use client'
+import { FeaturedCourses } from "@/components/FeaturedCourses";
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-      <h1>Main page</h1>
-    </>
+    <main className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+      <HeroSection />
+      <FeaturedCourses />
+    </main>
   );
 }
