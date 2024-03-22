@@ -1,7 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/moving-border'
-// import { BackgroundGradient } from './ui/backgroun-gradient'
+import { BackgroundGradient } from './ui/backgroun-gradient'
+import data from "@/data/music_courses.json";
+import { title } from 'process';
+
+interface courses {
+    id: number
+    title: string
+    provider: string
+    duration: string
+    level: string
+    description: string
+}
 
 export const FeaturedCourses = () => {
     return (
@@ -12,7 +23,21 @@ export const FeaturedCourses = () => {
                     <p className="mt-5 text-2xl leading-8 font-bold tracking-wider text-white sm:text-4xl">Learn With the Best</p>
                 </div>
             </div>
-            <div className=""></div>
+
+            <div className="mt-10 gap-10 flex items-center justify-center flex-wrap">
+                {data?.courses.map((item) => (
+                    <BackgroundGradient key={item.id} className='w-64 h-80 m-2 p-2 overflow-hidden'>
+                        <div className="text-white space-y-4 ">
+                            <h1 className="font-extrabold text-black text-xl">{item.title}</h1>
+                            <h2 className="">{item.provider}</h2>
+                            <h3 className="">Duration: {item.duration}</h3>
+                            <h4 className="">{item.level}</h4>
+                            <p className="">{item.description}</p>
+                        </div>
+                    </BackgroundGradient>
+                ))}
+            </div>
+
             <div className="mt-20 text-center">
                 <Button
                     borderRadius="1.75rem"

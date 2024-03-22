@@ -1,3 +1,37 @@
 {
-    "courses": []
-}
+    "courses": [
+      {
+        "id": 1,
+        "title": "Web Development Bootcamp",
+        "provider": "Codecademy",
+        "duration": "6 weeks",
+        "level": "Beginner",
+        "description": "A comprehensive introduction to web development covering HTML, CSS, JavaScript, and more."
+      },
+      {
+        "id": 2,
+        "title": "The Complete Web Developer Course 2.0",
+        "provider": "Udemy",
+        "duration": "30 hours",
+        "level": "Intermediate",
+        "description": "A complete guide to web development with HTML, CSS, JavaScript, jQuery, Bootstrap, PHP, MySQL, and WordPress."
+      },
+      {
+        "id": 3,
+        "title": "Responsive Web Design",
+        "provider": "Coursera",
+        "duration": "Approx. 20 hours",
+        "level": "Intermediate",
+        "description": "Learn to create web pages that render well on a variety of devices and window or screen sizes."
+      },
+      {
+        "id": 4,
+        "title": "Full Stack Web Development with React",
+        "provider": "edX",
+        "duration": "6 weeks",
+        "level": "Advanced",
+        "description": "Master the fundamentals of full stack web development using the React library."
+      }
+    ]
+  }
+  
