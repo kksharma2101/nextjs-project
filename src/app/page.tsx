@@ -2,6 +2,7 @@
 import { FeaturedCourses } from "@/components/FeaturedCourses";
 import HeroSection from "@/components/HeroSection";
 import { OurAchievements } from "@/components/OurAchievements";
+import { UpcomingCourses } from "@/components/UpcomingCourses";
 import { WhyChooseMe } from "@/components/WhyChooseMe";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <FeaturedCourses />
       <WhyChooseMe />
       <OurAchievements />
+      <UpcomingCourses />
     </main>
   );
 }

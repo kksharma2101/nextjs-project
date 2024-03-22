@@ -1,5 +1,6 @@
 import React from 'react'
 import { InfiniteMovingCards } from './ui/infinite-moving-cards'
+import { Boxes } from './ui/background-boxes'
 
 const achievementList = [
     {
@@ -33,12 +34,18 @@ const achievementList = [
 
 export const OurAchievements = () => {
     return (
-        <div className="h-[40rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
-            <InfiniteMovingCards
-                items={achievementList}
-                direction="right"
-                speed="slow"
-            />
+        <div className="h-[30rem] mt-2 items-center justify-center relative overflow-hidden">
+            <Boxes />
+            <h2 className="text-3xl mt-10 font-bold text-center text-white z-10">Hear our Harmony: Voices of success</h2>
+            <div className="flex justify-center mt-16 w-full overflow-hidden px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-6xl">
+                    <InfiniteMovingCards
+                        items={achievementList}
+                        direction="right"
+                        speed="slow"
+                    />
+                </div>
+            </div>
         </div>
     )
 }
