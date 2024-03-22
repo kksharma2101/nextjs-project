@@ -1,9 +1,11 @@
 'use client'
 import { FeaturedCourses } from "@/components/FeaturedCourses";
 import HeroSection from "@/components/HeroSection";
+import { Instructors } from "@/components/Instructors";
 import { OurAchievements } from "@/components/OurAchievements";
 import { UpcomingCourses } from "@/components/UpcomingCourses";
 import { WhyChooseMe } from "@/components/WhyChooseMe";
+import { Footer } from "@/components/Footer"
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       <WhyChooseMe />
       <OurAchievements />
       <UpcomingCourses />
+      <Instructors />
+      <Footer />
     </main>
   );
 }
