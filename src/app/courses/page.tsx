@@ -52,7 +52,7 @@ const courseData = [
         "price": 139.99,
         "instructor": "Chris Davis",
         "isFeatured": false,
-        "image": "/courses/jazz.jpg"
+        "image": ""
     },
     {
         "id": 6,
@@ -62,7 +62,7 @@ const courseData = [
         "price": 149.99,
         "instructor": "Alex Wilson",
         "isFeatured": true,
-        "image": "/courses/music-prod.jpg"
+        "image": ""
     },
     {
         "id": 7,
@@ -72,7 +72,7 @@ const courseData = [
         "price": 159.99,
         "instructor": "Samantha Miller",
         "isFeatured": false,
-        "image": "/courses/song-writing.jpg"
+        "image": ""
     },
     {
         "id": 8,
@@ -82,7 +82,7 @@ const courseData = [
         "price": 169.99,
         "instructor": "Luke Harris",
         "isFeatured": true,
-        "image": "/courses/music-prod.jpg"
+        "image": ""
     },
     {
         "id": 9,
@@ -92,7 +92,7 @@ const courseData = [
         "price": 179.99,
         "instructor": "Grace Lee",
         "isFeatured": false,
-        "image": "/courses/classical-music.jpg"
+        "image": ""
     },
     {
         "id": 10,
@@ -102,7 +102,7 @@ const courseData = [
         "price": 189.99,
         "instructor": "Ethan Moore",
         "isFeatured": true,
-        "image": "/courses/blues.jpg"
+        "image": ""
     }
 
 ];
