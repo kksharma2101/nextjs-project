@@ -9,11 +9,6 @@ const project =
             "link": ""
         },
         {
-            "title": "CSS Fundamentals",
-            "description": "Explore Cascading Style Sheets (CSS) to style and layout web pages, covering selectors, properties, and values.",
-            "link": ""
-        },
-        {
             "title": "JavaScript Essentials",
             "description": "Master the basics of JavaScript, a programming language used to add interactivity and dynamic behavior to web pages.",
             "link": ""
@@ -33,26 +28,7 @@ const project =
             "description": "Learn backend technologies like Node.js, Django, or Ruby on Rails to build server-side logic, manage databases, and handle user authentication.",
             "link": ""
         },
-        {
-            "title": "Database Management",
-            "description": "Explore database systems like MySQL, PostgreSQL, or MongoDB to store and retrieve data efficiently for your web applications.",
-            "link": ""
-        },
-        {
-            "title": "Version Control",
-            "description": "Understand version control concepts and tools such as Git to manage code changes, collaborate with team members, and track project history.",
-            "link": ""
-        },
-        {
-            "title": "Deployment and Hosting",
-            "description": "Learn how to deploy your web applications to servers or cloud platforms like AWS, Heroku, or Netlify for public access.",
-            "link": ""
-        },
-        {
-            "title": "Continuous Integration and Deployment (CI/CD)",
-            "description": "Implement automated",
-            "link": ""
-        }]
+    ]
 
 
 export const UpcomingCourses = () => {

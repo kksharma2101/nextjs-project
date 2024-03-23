@@ -17,10 +17,10 @@ export const Navbar = ({ className }: { className?: string }) => {
                 </Link>
                 <MenuItem setActive={setActive} active={active} item="Our Courses">
                     <div className="flex flex-col space-y-4 text-sm">
-                        <HoveredLink href="/web-devlopment">Web Development</HoveredLink>
-                        <HoveredLink href="/machine-learning">Machine Learning</HoveredLink>
-                        <HoveredLink href="/data-science">Data Science</HoveredLink>
-                        <HoveredLink href="/cyber-security">Cyber Security</HoveredLink>
+                        <HoveredLink href="/courses">Web Development</HoveredLink>
+                        <HoveredLink href="/courses">Machine Learning</HoveredLink>
+                        <HoveredLink href="/courses">Data Science</HoveredLink>
+                        <HoveredLink href="/courses">Cyber Security</HoveredLink>
                     </div>
                 </MenuItem>
                 <Link href={'/contact'}>

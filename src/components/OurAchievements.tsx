@@ -23,11 +23,6 @@ const achievementList = [
         "author": "Emily Brown",
         "title": "UI/UX Designer"
     },
-    {
-        "quote": "The beauty of web development lies in its endless possibilities and constant evolution.",
-        "author": "Michael Clark",
-        "title": "Web Development Instructor"
-    }
 ]
 
 
