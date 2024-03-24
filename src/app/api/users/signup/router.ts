@@ -7,7 +7,7 @@ import { sendEmail } from "@/helpers/mailHelper";
 
 export async function POST(reqest: NextRequest) {
     try {
-        const reqBody = reqest.json();
+        const reqBody = await reqest.json();
         const { userName, email, password } = reqBody;
 
         const user = User.findOne({ email });

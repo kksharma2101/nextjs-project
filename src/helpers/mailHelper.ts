@@ -5,31 +5,44 @@ import bcrypt from "bcrypt";
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
     const hashToken = await bcrypt.hash(userId.toString(), 8);
+
     // TODO: create email sending functionality
     if (emailType == "VERIFY") {
-      await User.findByIdAndUpdate(userId, { verifyToken: hashToken, verifyTokenExpiry: Date.now() + 3600 })
+      await User.findByIdAndUpdate(userId,
+        {
+          verifyToken: hashToken,
+          verifyTokenExpiry: Date.now() + 3600
+        })
     } else if (emailType == "RESET") {
-      await User.findByIdAndUpdate(userId, { forgotPasswordToken: hashToken, forgotPasswordTokenExpiry: Date.now() + 36000 })
+      await User.findByIdAndUpdate(userId,
+        {
+          forgotPasswordToken: hashToken,
+          forgotPasswordTokenExpiry: Date.now() + 36000
+        })
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false, // Use `true` for port 465, `false` for all other ports
+    let transport = nodemailer.createTransport({
+      host: "sandbox.smtp.mailtrap.io",
+      port: 2525,
       auth: {
-        user: "maddison53@ethereal.email",
-        pass: "jn7jnAPss4f63QBp6D",
-      },
+        user: "75259763c5335f", // ❌
+        pass: "05b985de5b8bbf" // ❌
+      }
     });
 
     const emailOptions = {
-      from: 'kamalsharma.microsoft', // sender address
-      to: email, // list of receivers
-      subject: emailType == "VERIFY" ? "Verify your email" : "Reset your password", // Subject line
-      html: "<b>Hello world?</b>", // html body
+      from: 'kamalsharma.microsoft',
+      to: email,
+      subject: emailType == "VERIFY" ? "Verify your email" : "Reset your password",
+      html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashToken}"> here </a>
+       to ${emailType == "VERIFY" ? "Verify your email" : "Reset your password"} 
+       or copy and paste the link below your browser.
+      </br>
+      ${process.env.DOMAIN}/verifyemail?token=${hashToken}
+      </p>`,
     }
 
-    const emailResponse = await transporter.sendMail(emailOptions);
+    const emailResponse = await transport.sendMail(emailOptions);
     (emailOptions)
     return emailResponse;
 
