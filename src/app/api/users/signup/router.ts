@@ -24,7 +24,7 @@ export async function POST(reqest: NextRequest) {
             userName,
             email,
             password: passwordHash
-        })
+        });
 
         const saveUser = await addUser.save();
         console.log(saveUser);
@@ -36,11 +36,11 @@ export async function POST(reqest: NextRequest) {
             status: 404,
             message: "User registerd successfully",
             saveUser
-        })
+        });
 
 
 
     } catch (error) {
         return NextResponse.json({ error: "Something went wrong in signup" }, { status: 404 })
     }
-}
+};
