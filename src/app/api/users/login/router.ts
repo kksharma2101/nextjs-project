@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModels";
 import { connectToDb } from "@/dbConfig/dbConfig";
 import bcrypt from 'bcrypt';
-import JWT from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
+connectToDb();
 export async function POST(request: NextRequest) {
     try {
         const { email, password } = await request.json();
@@ -23,13 +24,22 @@ export async function POST(request: NextRequest) {
                 message: "User password is not match, try again"
             })
         }
-        // await JWT.
 
-        return NextResponse.json({
+        const tokenData = {
+            id: user._id
+        }
+
+        const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1h' })
+
+        const respone = NextResponse.json({
             success: true,
             message: "User login successfully",
             status: 200
         })
+
+        return respone.cookies.set("token", token, {
+            httpOnly: true
+        });
 
 
     } catch (error) {
