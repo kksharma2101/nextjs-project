@@ -1,10 +1,12 @@
 import User from "@/models/userModels";
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
     const hashToken = await bcrypt.hash(userId.toString(), 8);
+    // console.log(hashToken)
 
     // TODO: create email sending functionality
     if (emailType == "VERIFY") {
@@ -52,5 +54,9 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
 
   } catch (error) {
     console.log(error)
+    return NextResponse.json({
+      success: false,
+      message: "Error in send mail helper"
+    })
   }
 }

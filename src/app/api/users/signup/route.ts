@@ -31,7 +31,7 @@ export async function POST(reqest: NextRequest) {
         console.log(saveUser);
 
         // send verification email 
-        await sendEmail({ email, emailType: "VERIFIY", userId: saveUser._id });
+        await sendEmail({ email, emailType: "VERIFY", userId: saveUser._id });
 
         return NextResponse.json({
             status: 202,

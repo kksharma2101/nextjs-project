@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 
 connectToDb();
+
 export async function POST(request: NextRequest) {
     try {
         const { email, password } = await request.json();
@@ -13,7 +14,7 @@ export async function POST(request: NextRequest) {
 
         if (!user) {
             return NextResponse.json({
-                message: "User is not exists, try again"
+                message: "User is already exists, try another"
             })
         }
 
@@ -29,18 +30,21 @@ export async function POST(request: NextRequest) {
             id: user._id
         }
 
-        const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1h' })
+        const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
-        // const respone =
+        console.log("check before return")
+        // const responeUser =
         return NextResponse.json({
             success: true,
             message: "User login successfully",
             status: 200
         }).cookies.set("token", token, {
-            httpOnly: true
+            httpOnly: true,
+            secure: true
         });
 
-        // return respone
+
+        // return responeUser;
 
 
     } catch (error) {
