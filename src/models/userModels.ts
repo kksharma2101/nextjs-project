@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    userName :{
+    userName: {
         type: String,
-        required: [true,"Username is required"],
+        required: [true, "Username is required"],
         maxLength: [8, "You will assign maximum 8 word username"]
     },
     email: {
@@ -31,6 +31,6 @@ const userSchema = new mongoose.Schema({
 
 })
 
-const User = mongoose.models.users || mongoose.model("users",userSchema);
+const User = mongoose.models.users || mongoose.model("users", userSchema);
 
 export default User;

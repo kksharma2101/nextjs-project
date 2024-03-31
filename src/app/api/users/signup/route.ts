@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModels";
 import { connectToDb } from "@/dbConfig/dbConfig";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcryptjs";
 import { sendEmail } from "@/helpers/mailHelper";
 
+connectToDb();
 
 export async function POST(reqest: NextRequest) {
     try {
-        const reqBody = await reqest.json();
-        const { userName, email, password } = reqBody;
+        const { userName, email, password } = await reqest.json();
+        // const { userName, email, password } = reqBody;
 
-        const user = User.findOne({ email });
+        const user = await User.findOne({ email });
 
-        if (email) {
+        if (user) {
             return NextResponse.json({ error: "Email is already exists" }, { status: 500 })
         }
 
@@ -32,8 +33,8 @@ export async function POST(reqest: NextRequest) {
         // send verification email 
         await sendEmail({ email, emailType: "VERIFIY", userId: saveUser._id });
 
-        NextResponse.json({
-            status: 404,
+        return NextResponse.json({
+            status: 202,
             message: "User registerd successfully",
             saveUser
         });

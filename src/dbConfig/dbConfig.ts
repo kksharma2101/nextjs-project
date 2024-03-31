@@ -1,7 +1,6 @@
-import { error } from "console";
 import mongoose from "mongoose";
 
-export const connectToDb = async () => {
+export async function connectToDb() {
     try {
         mongoose.connect(process.env.MONGODB_URL!);
 
