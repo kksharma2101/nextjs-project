@@ -1,12 +1,38 @@
 'use client'
 
 import React, { FormEvent, FormEventHandler, useState } from 'react'
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
-const Signup = () => {
+export default function Signup() {
+    const router = useRouter();
+    const [user, setUser] = useState({
+        username: "",
+        email: "",
+        password: ""
+    });
+    const [buttonDesabled, setButtonDesabled] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
+    const onSignup = async () => {
+        try {
+            setLoading(true)
+            const res = await axios.post(`${process.env.DOMAIN!}/api/users/signup`, user)
+            console.log("user signup successfully", res);
+            router.push("/login")
+            setLoading(false)
+
+        } catch (error: any) {
+            console.log(error)
+        }
+    }
+
     const [inputText, setInputText] = useState('');
 
     const handleSignupForm = (e: FormEvent) => {
         e.preventDefault()
+        onSignup()
     }
 
     return (
@@ -44,5 +70,3 @@ const Signup = () => {
         </div>
     )
 }
-
-export default Signup;
