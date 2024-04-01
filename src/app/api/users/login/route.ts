@@ -1,3 +1,4 @@
+'use server'
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModels";
 import { connectToDb } from "@/dbConfig/dbConfig";
@@ -27,24 +28,22 @@ export async function POST(request: NextRequest) {
         }
 
         const tokenData = {
-            id: user._id
+            id: user._id,
+            name: user.name
         }
 
-        const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1h' });
+        const token = await jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1d' });
 
-        console.log("check before return")
-        // const responeUser =
-        return NextResponse.json({
+        const response = NextResponse.json({
             success: true,
             message: "User login successfully",
             status: 200
-        }).cookies.set("token", token, {
+        })
+
+        return response.cookies.set("token", token, {
             httpOnly: true,
-            secure: true
+            // secure: true
         });
-
-
-        // return responeUser;
 
 
     } catch (error) {
