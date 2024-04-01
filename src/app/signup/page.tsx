@@ -13,8 +13,8 @@ const Signup = () => {
         <div className='h-screen w-full bg-white flex items-center justify-center'>
             <form onSubmit={handleSignupForm}>
                 <div
-                    className="flex flex-col items-start justify-start sm:p-8 sm:border border-black text-xl md:text-2xl rounded-lg">
-                    <label className='my-4'>Name:</label>
+                    className="flex flex-col items-start justify-start sm:p-6 sm:border border-black text-xl md:text-2xl rounded-lg">
+                    <label className='my-2'>Name:</label>
                     <input type="name"
                         // value="name"
                         placeholder='Enter your name'

@@ -40,10 +40,12 @@ export async function POST(request: NextRequest) {
             status: 200
         })
 
-        return response.cookies.set("token", token, {
+        response.cookies.set("token", token, {
             httpOnly: true,
             // secure: true
         });
+
+        return response;
 
 
     } catch (error) {
