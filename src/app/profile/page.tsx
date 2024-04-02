@@ -1,7 +1,10 @@
 import React from 'react'
 
-export const page = () => {
+export default function Profile() {
     return (
-        <div>profile page</div>
+        <div className='text-white'>
+            name:
+            emailId:
+        </div>
     )
 }
