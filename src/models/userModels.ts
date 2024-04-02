@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    userName: {
+    username: {
         type: String,
         required: [true, "Username is required"],
         maxLength: [8, "You will assign maximum 8 word username"]
@@ -31,6 +31,6 @@ const userSchema = new mongoose.Schema({
 
 })
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const User = mongoose.models.nextuser || mongoose.model("nextuser", userSchema);
 
 export default User;

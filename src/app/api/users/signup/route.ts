@@ -8,7 +8,7 @@ connectToDb();
 
 export async function POST(reqest: NextRequest) {
     try {
-        const { userName, email, password } = await reqest.json();
+        const { username, email, password } = await reqest.json();
         // const { userName, email, password } = reqBody;
 
         const user = await User.findOne({ email });
@@ -22,7 +22,7 @@ export async function POST(reqest: NextRequest) {
         const passwordHash = await bcrypt.hash(password, passwordSalt);
 
         const addUser = new User({
-            userName,
+            username,
             email,
             password: passwordHash
         });
@@ -42,6 +42,7 @@ export async function POST(reqest: NextRequest) {
 
 
     } catch (error) {
-        return NextResponse.json({ error: "Something went wrong in signup" }, { status: 404 })
+        console.log(error)
+        return NextResponse.json({ error: "Something went wrong in signup", }, { status: 404 })
     }
 };
