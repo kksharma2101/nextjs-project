@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
         if (!user) {
             return NextResponse.json({
-                message: "User is already exists, try another"
+                message: "User is not found, try another"
             })
         }
 
