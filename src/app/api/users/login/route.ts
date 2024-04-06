@@ -1,9 +1,9 @@
-'use server'
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModels";
 import { connectToDb } from "@/dbConfig/dbConfig";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 connectToDb();
 
@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
 
         const tokenData = {
             id: user._id,
-            name: user.name
         }
 
         const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1d' });
@@ -39,14 +38,13 @@ export async function POST(request: NextRequest) {
             message: "User login successfully",
             status: 200
         })
-
-        response.cookies.set("token", token, {
-            httpOnly: true,
-            secure: true
-        });
-
+        cookies().set('token', token)
+        // response.setCookie;
+        // cookies().set("token", token, {
+        //     httpOnly: true,
+        //     secure: true,
+        // });
         return response;
-
 
     } catch (error) {
         return NextResponse.json({ error: "Something went wrong in login" }, { status: 404 })

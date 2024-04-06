@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 
 export default function LoginPage() {
     const router = useRouter();
-    const [user, setUser] = React.useState({
+    const [user, setUser] = useState({
         email: "",
         password: ""
     })
