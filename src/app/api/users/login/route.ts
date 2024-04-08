@@ -3,7 +3,7 @@ import User from "@/models/userModels";
 import { connectToDb } from "@/dbConfig/dbConfig";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 connectToDb();
 
@@ -26,25 +26,23 @@ export async function POST(request: NextRequest) {
             })
         }
 
-        // const tokenData = {
-        //     id: user._id,
-        // }
-
         const token = jwt.sign({
             data: user._id
         }, process.env.JWT_SECRET!, { expiresIn: '8h' });
 
-        const response = NextResponse.json({
-            success: true,
-            message: "User login successfully",
-            status: 200
+        const response = NextResponse.next()
+        // .json({
+        //     success: true,
+        //     message: "User login successfully",
+        //     status: 200
+        // })
+        // cookies().set('token', token)
+
+        response.cookies.set("token", token, {
+            httpOnly: true,
+
         })
-        cookies().set('token', token)
-        // response.setCookie;
-        // cookies().set("token", token, {
-        //     httpOnly: true,
-        //     secure: true,
-        // });
+
         return response;
 
     } catch (error) {

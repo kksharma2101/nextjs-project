@@ -44,8 +44,6 @@ export async function POST(reqest: NextRequest) {
             saveUser
         });
 
-
-
     } catch (error) {
         console.log(error)
         return NextResponse.json({ error: "Something went wrong in signup", }, { status: 404 })
