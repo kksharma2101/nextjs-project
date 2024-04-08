@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
                 message: "User is not found, try another"
             })
         }
-
         const match = await bcrypt.compare(password, user.password)
 
         if (!match) {
@@ -27,11 +26,13 @@ export async function POST(request: NextRequest) {
             })
         }
 
-        const tokenData = {
-            id: user._id,
-        }
+        // const tokenData = {
+        //     id: user._id,
+        // }
 
-        const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1d' });
+        const token = jwt.sign({
+            data: user._id
+        }, process.env.JWT_SECRET!, { expiresIn: '8h' });
 
         const response = NextResponse.json({
             success: true,
@@ -47,6 +48,7 @@ export async function POST(request: NextRequest) {
         return response;
 
     } catch (error) {
+        console.log(error)
         return NextResponse.json({ error: "Something went wrong in login" }, { status: 404 })
     }
 }
